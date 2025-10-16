@@ -28,6 +28,8 @@ DISTRICTS = [
 ]
 DIRECTIONS = ["Đông Bắc", "Tây", "Nam", "Tây Bắc", "Bắc", "Tây Nam", "Đông", "Đông Nam"]
 LEGAL_PAPERS = ["Đã có sổ", "Đang chờ sổ",""]
+
+
 HEADER = [
     "GIỐNG - LOẠI","GIỐNG - NHU CẦU","GIỐNG - TỈNH THÀNH","QUẬN HUYỆN",
     "GIÁ - TRIỆU ĐỒNG","DIỆN TÍCH - M2","HƯỚNG","SỐ TẦNG",
