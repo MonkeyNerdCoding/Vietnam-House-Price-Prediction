@@ -1,0 +1,8 @@
+python .\generate_synthetic_vn_real_estate.py --count 250 --file "House_price\GiaChungCu_HCM_June2021_laydulieu_com.csv"
+
+python .\generate_synthetic_vn_real_estate.py --count 250 --file "House_price\GiaChungCu_HCM_June2021_laydulieu_com.csv"
+
+python .\generate_synthetic_vn_real_estate.py
+
+
+1952
