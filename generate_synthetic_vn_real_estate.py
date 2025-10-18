@@ -49,44 +49,54 @@ def generate_row():
     province = CITY
     district = fake.random_element(elements=DISTRICTS)
 
+    # ---- Nhóm giá quận ----
     DISTRICT_PRICE_RANGE = {
         "cao": ["Quận 1", "Quận 3", "Quận 4", "Quận 5", "Quận Bình Thạnh", "Quận Phú Nhuận", "Quận 10"],
         "trung": ["Quận 2", "Quận 7", "Quận Tân Bình", "Quận Tân Phú", "Quận 11", "Quận 9", "Quận Thủ Đức"],
         "thap": ["Quận 12", "Quận Bình Tân", "Huyện Bình Chánh", "Huyện Nhà Bè", "Huyện Hóc Môn"]
     }
 
-    if district in DISTRICT_PRICE_RANGE["cao"]:
-        price_min, price_max = 3500, 8000   # triệu đồng
-    elif district in DISTRICT_PRICE_RANGE["trung"]:
-        price_min, price_max = 2000, 6000
-    else:
-        price_min, price_max = 1000, 4000
-
-    def random_price():
-        mean = (price_min + price_max) / 2
-        std_dev = (price_max - price_min) / 6
-        val = max(price_min, min(price_max, random.gauss(mean, std_dev)))
-        return int(val)
-
-    price = sometimes_empty(lambda: str(random_price()), empty_prob=0.03)
-
-    # Diện tích có liên hệ nhẹ với khu vực
+    # ---- Sinh diện tích ----
     if district in DISTRICT_PRICE_RANGE["cao"]:
         area_val = random.uniform(25, 90)
     elif district in DISTRICT_PRICE_RANGE["trung"]:
         area_val = random.uniform(40, 120)
     else:
-        area_val = random.uniform(50, 150)
-    area = sometimes_empty(lambda: f"{area_val:.1f}", empty_prob=0.05)
+        area_val = random.uniform(50, 160)
 
-    # Hướng, phòng, toilet, giấy tờ — cho phép null tự nhiên hơn
-    direction = sometimes_empty(lambda: fake.random_element(elements=DIRECTIONS), empty_prob=0.4)
-    floors = ""  # luôn null theo yêu cầu
-    rooms = sometimes_empty(lambda: str(random.randint(1, 4)), empty_prob=0.12)
-    toilets = sometimes_empty(lambda: str(random.randint(1, 3)), empty_prob=0.12)
-    legal = sometimes_empty(lambda: fake.random_element(elements=LEGAL_PAPERS), empty_prob=0.25)
+    # ---- Chọn giá trên mỗi m² theo nhóm ----
+    if district in DISTRICT_PRICE_RANGE["cao"]:
+        price_per_m2 = random.uniform(120, 250)   # triệu/m²
+    elif district in DISTRICT_PRICE_RANGE["trung"]:
+        price_per_m2 = random.uniform(70, 130)
+    else:
+        price_per_m2 = random.uniform(25, 70)
+
+    # ---- Tính tổng giá ----
+    price_val = area_val * price_per_m2  # triệu đồng (giá thật tế gần hơn)
+    price_val = round(price_val, 1)      # làm tròn 1 chữ số thập phân
+
+    # ---- Số phòng & toilet theo diện tích ----
+    if area_val < 40:
+        rooms_val, toilets_val = 1, 1
+    elif area_val < 70:
+        rooms_val, toilets_val = random.choice([1, 2]), 1
+    elif area_val < 100:
+        rooms_val, toilets_val = random.choice([2, 3]), random.choice([1, 2])
+    else:
+        rooms_val, toilets_val = random.choice([3, 4]), random.choice([2, 3])
+
+    # ---- Có thể để trống ngẫu nhiên ----
+    price = sometimes_empty(lambda: f"{price_val:.1f}", empty_prob=0.02)
+    area = sometimes_empty(lambda: f"{area_val:.1f}", empty_prob=0.03)
+    direction = sometimes_empty(lambda: fake.random_element(elements=DIRECTIONS), empty_prob=0.35)
+    floors = ""  # luôn null
+    rooms = sometimes_empty(lambda: str(rooms_val), empty_prob=0.08)
+    toilets = sometimes_empty(lambda: str(toilets_val), empty_prob=0.08)
+    legal = sometimes_empty(lambda: fake.random_element(elements=LEGAL_PAPERS), empty_prob=0.2)
 
     return [prop_type, need, province, district, price, area, direction, floors, rooms, toilets, legal]
+
 
 
 
