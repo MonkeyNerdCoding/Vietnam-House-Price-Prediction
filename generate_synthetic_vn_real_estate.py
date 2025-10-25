@@ -1,15 +1,4 @@
 #!/usr/bin/env python3
-"""
-Generate synthetic Vietnamese real-estate rows and append to an existing CSV.
-
-Usage:
-    python generate_synthetic_vn_real_estate.py --count 500
-
-By default it appends to House_price/GiaChungCu_HCM_June2021_laydulieu_com.csv
-
-The script preserves the CSV header ordering, encoding (UTF-8), skips duplicate header rows,
-and allows specifying a custom output/input file with --file.
-"""
 
 import csv
 import argparse
