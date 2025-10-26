@@ -1,0 +1,4 @@
+Area (m2),Rooms,Toilets,Transaction Type,City,District,Direction,Legal Papers,Predicted Price (Million VND),Predicted Price (Billion VND)
+45.0,2,1,Bán,Hồ Chí Minh,District 1,Đông,Đã có sổ,4480.77,4.481
+85.0,3,2,Bán,Hồ Chí Minh,District 7,Tây,Đang chờ sổ,8387.64,8.388
+30.0,1,1,Bán,Hồ Chí Minh,District 10,Nam,Giấy tờ khác,3180.36,3.18
