@@ -9,7 +9,7 @@ from faker import Faker
 fake = Faker("vi_VN")
 
 PROPERTY_TYPES = ["Căn hộ, chung cư"]
-TRANSACTION_TYPES = ["Cần bán", "Cần thuê"]
+TRANSACTION_TYPES = ["Cần bán"]
 CITY = "Hồ Chí Minh"
 DISTRICTS = [
     "Quận 9","Quận Tân Bình","Quận Tân Phú","Quận 7","Quận 2","Quận 11",
