@@ -1,4 +1,3 @@
-````markdown
 
 # English Version
 # Ho Chi Minh House Price Prediction
@@ -97,7 +96,7 @@ After processing, the data is saved in the `/Complete_dataset` directory and is 
 
 -----
 
-```
+============================================================================================
 
 
 # Vietnamese Version
@@ -162,14 +161,14 @@ cd Vietnam-House-Price-Prediction
 Cài đặt tất cả thư viện cần thiết (được liệt kê trong `requirements.txt`):
 
 ```bash
-# tạo venv
+# Bước 1 tạo venv
 python -m venv venv         
 
-# kích hoạt venv
+# Bước 2 : kích hoạt venv
 .\.venv\Scripts\Activate.ps1       # Windows
 source venv/bin/activate    # macOS/Linux
 
-# cài đặt requirements
+# Bước 3 cài đặt requirements
 pip install -r requirements.txt
 ```
 
