@@ -156,7 +156,7 @@ git clone https://github.com/MonkeyNerdCoding/Vietnam-House-Price-Prediction.git
 cd Vietnam-House-Price-Prediction
 ```
 
-### ⚙️ Bước 2: Cài đặt phụ thuộc
+### ⚙️ Bước 2: Chạy project và Cài đặt môi trường (Dependencies)
 
 Cài đặt tất cả thư viện cần thiết (được liệt kê trong `requirements.txt`):
 
